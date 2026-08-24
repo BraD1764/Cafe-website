@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu - The Lapa Coffee & Kitchen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        
+        :root {
+            --color-sand: #F5EDE3;
+            --color-stone: #D4C4B5;
+            --color-earth: #8B5A2B;
+            --color-terracotta: #C86A2B;
+            --color-green: #4A7C59;
+            --color-gold: #E8C547;
+            --color-charcoal: #2C2C2C;
+            --color-white: #FFFFFF;
+            --color-off-white: #FAF8F5;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--color-charcoal);
+            background-color: var(--color-off-white);
+            line-height: 1.6;
+        }
+        img { 
+            max-width: 100%; 
+            height: auto; 
+            display: block;
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1, h2, h3, h4 { 
+            font-family: var(--font-heading); 
+            font-weight: 700; 
+            line-height: 1.2; 
+        }
+        h1 { font-size: 3rem; font-weight: 800; }
+        h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--color-terracotta);
+            margin: 0.5rem auto 0;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* BUTTONS */
+        .btn-primary {
+            display: inline-block;
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .btn-primary:hover {
+            background: var(--color-earth);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--color-white);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid var(--color-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-earth);
+        }
+        
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            padding: 12px 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-img {
+            height: 48px;
+            width: auto;
+        }
+        .logo-text {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--color-earth);
+        }
+        .logo-text span { color: var(--color-terracotta); }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .nav-links a {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--color-charcoal);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-terracotta);
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a:hover { color: var(--color-terracotta); }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .nav-actions .icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--color-charcoal);
+            transition: all 0.3s ease;
+            padding: 6px;
+        }
+        .nav-actions .icon-btn:hover { color: var(--color-terracotta); }
+        .btn-book-table {
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-book-table:hover {
+            background: var(--color-earth);
+            transform: translateY(-2px);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: var(--color-charcoal);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        /* PAGE BANNER */
+        .page-banner {
+            padding: 140px 0 60px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            background-size: cover;
+            background-position: center;
+            color: var(--color-white);
+            text-align: center;
+        }
+        .page-banner h1 { font-size: 3rem; }
+        .page-banner .breadcrumb {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        .page-banner .breadcrumb a { color: var(--color-gold); }
+        
+        .section-padding { padding: 4rem 0; }
+        
+        /* MENU TABS */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            background: var(--color-white);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+        .menu-tab {
+            padding: 10px 24px;
+            border: none;
+            background: transparent;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .menu-tab:hover { color: var(--color-earth); }
+        .menu-tab.active {
+            background: var(--color-terracotta);
+            color: var(--color-white);
+        }
+        
+        /* MENU CATEGORIES */
+        .menu-category { display: none; }
+        .menu-category.active { display: block; }
+        .menu-category h2 {
+            color: var(--color-earth);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* MENU ITEMS GRID */
+        .menu-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        /* SINGLE MENU ITEM */
+        .menu-item {
+            display: flex;
+            gap: 1rem;
+            background: var(--color-white);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            align-items: center;
+            border: 1px solid #f0ece8;
+        }
+        .menu-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+            border-color: var(--color-terracotta);
+        }
+        
+        /* MENU ITEM IMAGE */
+        .menu-item img {
+            width: 90px;
+            height: 90px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid var(--color-sand);
+        }
+        
+        /* MENU ITEM INFO */
+        .menu-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .menu-item-info .item-name {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-earth);
+            display: inline-block;
+        }
+        .menu-item-info .item-price {
+            float: right;
+            font-weight: 700;
+            color: var(--color-terracotta);
+            font-size: 1.1rem;
+            background: var(--color-sand);
+            padding: 2px 12px;
+            border-radius: 20px;
+        }
+        .menu-item-info .item-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 4px;
+            clear: both;
+            line-height: 1.4;
+        }
+        
+        /* CTA SECTION */
+        .cta-section {
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            text-align: center;
+            padding: 4rem 0;
+        }
+        .cta-section h2 { color: var(--color-white); }
+        .cta-section p { margin-bottom: 1rem; font-size: 1.1rem; }
+        
+        /* FOOTER */
+        .footer {
+            background: var(--color-charcoal);
+            color: #ccc;
+            padding: 3rem 0 1rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        .footer-brand .logo-text { color: var(--color-white); }
+        .footer-brand p { margin: 1rem 0; font-size: 0.95rem; }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: var(--color-white);
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        .footer-social a:hover {
+            background: var(--color-terracotta);
+            transform: translateY(-3px);
+        }
+        .footer-links h4 {
+            color: var(--color-white);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .footer-links a {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: var(--color-terracotta);
+            padding-left: 4px;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        /* Tablets */
+        @media (max-width: 1024px) {
+            .menu-items { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--color-white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                box-shadow: var(--shadow-md);
+                transform: translateY(-120%);
+                transition: all 0.3s ease;
+                opacity: 0;
+                pointer-events: none;
+                z-index: 999;
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            .nav-actions .btn-book-table { display: none; }
+            .menu-items { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .menu-tabs { 
+                top: 70px; 
+                gap: 0.5rem;
+                padding: 0.8rem;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            .menu-tab { 
+                padding: 6px 16px; 
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+            .page-banner h1 { font-size: 2rem; }
+            .container { padding: 0 1rem; }
+        }
+        
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .menu-item { 
+                flex-direction: column; 
+                text-align: center;
+                padding: 1rem;
+            }
+            .menu-item img { 
+                width: 100%; 
+                height: 160px; 
+                border-radius: 8px;
+            }
+            .menu-item-info .item-price { 
+                float: none; 
+                display: inline-block;
+                margin-top: 4px;
+            }
+            .menu-item-info .item-name {
+                display: block;
+                font-size: 1.2rem;
+            }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            .section-padding { padding: 2rem 0; }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="The Lapa Logo" class="logo-img" onerror="this.style.display='none'">
+                <span class="logo-text">The <span>Lapa</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html" class="active">Our Menu</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#events">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="icon-btn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="btn-book-table" onclick="window.location.href='contact.html'">Book a Table</button>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- PAGE BANNER -->
+    <section class="page-banner" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/menu-banner.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+            <h1>Our Menu</h1>
+            <p>Fresh, local, and made with love</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / Our Menu
+            </div>
+        </div>
+    </section>
+    
+    <!-- MENU SECTION -->
+    <section class="section-padding">
+        <div class="container">
+            
+            <!-- MENU TABS -->
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-target="all">All</button>
+                <button class="menu-tab" data-target="coffee">Coffee &amp; Drinks</button>
+                <button class="menu-tab" data-target="breakfast">Breakfast</button>
+                <button class="menu-tab" data-target="lunch">Lunch</button>
+                <button class="menu-tab" data-target="burgers">Burgers &amp; Wraps</button>
+                <button class="menu-tab" data-target="desserts">Desserts</button>
+            </div>
+            
+            <div id="all" class="menu-category active">
+                <h2>Complete Menu</h2>
+                <div class="menu-items">
+                    
+                    <!-- 1. Espresso -->
+                    <div class="menu-item">
+                        <img src="images/espresso.jpg" alt="Espresso" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E☕%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Espresso</span>
+                            <span class="item-price">R25</span>
+                            <p class="item-desc">A rich, bold single shot of our signature African blend.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2. Latte -->
+                    <div class="menu-item">
+                        <img src="images/ceramic cup.jpg" alt="Latte" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E☕%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Latte</span>
+                            <span class="item-price">R35</span>
+                            <p class="item-desc">Smooth, creamy, and perfectly balanced.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 3. Iced Americano -->
+                    <div class="menu-item">
+                        <img src="images/iced-coffee.jpg" alt="Iced Americano" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🧊%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Iced Americano</span>
+                            <span class="item-price">R32</span>
+                            <p class="item-desc">Refreshing and strong, perfect for the Lowveld heat.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 4. Spiced Rooibos Latte -->
+                    <div class="menu-item">
+                        <img src="images/latte.jpg " alt="Spiced Rooibos Latte" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🌿%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Spiced Rooibos Latte</span>
+                            <span class="item-price">R38</span>
+                            <p class="item-desc">A local favourite with a hint of cinnamon and honey.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 5. Lowveld Breakfast -->
+                    <div class="menu-item">
+                        <img src="images/lowveld -breakfast.png" alt="Lowveld Breakfast" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🍳%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Lowveld Breakfast</span>
+                            <span class="item-price">R120</span>
+                            <p class="item-desc">Free-range eggs, grilled tomato, mushrooms, avocado, and sourdough.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 6. The Lapa Burger -->
+                    <div class="menu-item">
+                        <img src="images/burger.png" alt="The Lapa Burger" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🍔%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> The Lapa Burger</span>
+                            <span class="item-price">R145</span>
+                            <p class="item-desc">Double beef patty, cheddar, bacon, caramelised onion, and Lapa sauce.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 7. Shakshuka -->
+                    <div class="menu-item">
+                        <img src="images/shakshuka.jpg" alt="Shakshuka" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🍅%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Shakshuka</span>
+                            <span class="item-price">R95</span>
+                            <p class="item-desc">Poached eggs in a spicy tomato and pepper sauce, served with pita bread.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 8. Malva Pudding -->
+                    <div class="menu-item">
+                        <img src="images/malva-pudding.png" alt="Malva Pudding" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🍮%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Malva Pudding</span>
+                            <span class="item-price">R65</span>
+                            <p class="item-desc">Traditional South African dessert with a creamy custard.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 9. Cappuccino -->
+                    <div class="menu-item">
+                        <img src="images/cappuccino.png" alt="Cappuccino" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%2２.3em%２ font-family=%２Arial%２ font-size=%２24%２ fill=%２%２38B5A2B%２%３E☕%３C/text%３E%３C/svg%３E'">
+                        <div class="menu-item-info">
+                            <span class="item-name">☕ Cappuccino</span>
+                            <span class="item-price">R38</span>
+                            <p class="item-desc">Classic Italian coffee with perfectly frothed milk.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 10. Mocha -->
+                    <div class="menu-item">
+                        <img src="images/Mocha.png" alt="Mocha" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🍫%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Mocha</span>
+                            <span class="item-price">R42</span>
+                            <p class="item-desc">Espresso with rich dark chocolate and steamed milk.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div id="coffee" class="menu-category">
+                <h2>Coffee &amp; Drinks</h2>
+                <div class="menu-items">
+                    
+                    <div class="menu-item">
+                        <img src="images/espresso.jpg" alt="Espresso" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E☕%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Espresso</span>
+                            <span class="item-price">R25</span>
+                            <p class="item-desc">A rich, bold single shot of our signature African blend.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/ceramic cup.jpg" alt="Latte" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E☕%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Latte</span>
+                            <span class="item-price">R35</span>
+                            <p class="item-desc">Smooth, creamy, and perfectly balanced.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/iced-coffee.jpg" alt="Iced Americano" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🧊%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Iced Americano</span>
+                            <span class="item-price">R32</span>
+                            <p class="item-desc">Refreshing and strong, perfect for the Lowveld heat.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/latte.jpg" alt="Spiced Rooibos Latte" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🌿%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Spiced Rooibos Latte</span>
+                            <span class="item-price">R38</span>
+                            <p class="item-desc">A local favourite with a hint of cinnamon and honey.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/cappuccino.png" alt="Cappuccino" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E☕%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Cappuccino</span>
+                            <span class="item-price">R38</span>
+                            <p class="item-desc">Classic Italian coffee with perfectly frothed milk.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/Mocha.png" alt="Mocha" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🍫%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Mocha</span>
+                            <span class="item-price">R42</span>
+                            <p class="item-desc">Espresso with rich dark chocolate and steamed milk.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div id="breakfast" class="menu-category">
+                <h2>Breakfast</h2>
+                <div class="menu-items">
+                    
+                    <div class="menu-item">
+                        <img src="images/lowveld -breakfast.png" alt="Lowveld Breakfast" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🍳%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Lowveld Breakfast</span>
+                            <span class="item-price">R120</span>
+                            <p class="item-desc">Free-range eggs, grilled tomato, mushrooms, avocado, and sourdough.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/shakshuka.jpg" alt="Shakshuka" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🍅%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Shakshuka</span>
+                            <span class="item-price">R95</span>
+                            <p class="item-desc">Poached eggs in a spicy tomato and pepper sauce, served with pita bread.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/Lowveld oats.png" alt="Lowveld Oats" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🥣%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Lowveld Oats</span>
+                            <span class="item-price">R75</span>
+                            <p class="item-desc">Creamy oats with fresh berries, honey, and toasted nuts.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/Avocado toast.png" alt="Avocado Toast" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🥑%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Avocado Toast</span>
+                            <span class="item-price">R85</span>
+                            <p class="item-desc">Sourdough toast with smashed avo, cherry tomatoes, and feta.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div id="lunch" class="menu-category">
+                <h2>Lunch</h2>
+                <div class="menu-items">
+                    
+                    <div class="menu-item">
+                        <img src="images/Lowveld Salad.png" alt="Lowveld Salad" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🥗%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Lowveld Salad</span>
+                            <span class="item-price">R95</span>
+                            <p class="item-desc">Mixed greens, grilled chicken, avocado, beetroot, and citrus vinaigrette.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/Chicken Wrap.png" alt="Chicken Wrap" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%2２.3em%２ font-family=%２Arial%２ font-size=%２２4%２ fill=%２%２38B5A2B%２%3E🌯%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Chicken Wrap</span>
+                            <span class="item-price">R85</span>
+                            <p class="item-desc">Grilled chicken, lettuce, tomato, and garlic mayo in a soft tortilla.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/Three-Cheese Toastie.png" alt="Three-Cheese Toastie" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%2２.3em%２ font-family=%２Arial%２ font-size=%２２4%２ fill=%２%２38B5A2B%２%3E🧀%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Three-Cheese Toastie</span>
+                            <span class="item-price">R75</span>
+                            <p class="item-desc">Cheddar, mozzarella, and feta on toasted sourdough.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div id="burgers" class="menu-category">
+                <h2>Burgers &amp; Wraps</h2>
+                <div class="menu-items">
+                    
+                    <div class="menu-item">
+                        <img src="images/Burger.png" alt="The Lapa Burger" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%2２.3em%２ font-family=%２Arial%２ font-size=%２２4%２ fill=%２%２38B5A2B%２%3E🍔%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> The Lapa Burger</span>
+                            <span class="item-price">R145</span>
+                            <p class="item-desc">Double beef patty, cheddar, bacon, caramelised onion, and Lapa sauce.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/Spicy chicken burger.png" alt="Spicy Chicken Burger" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🍗%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Spicy Chicken Burger</span>
+                            <span class="item-price">R125</span>
+                            <p class="item-desc">Cajun-spiced chicken, lettuce, tomato, and creamy peri-peri sauce.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/Veggie burger.png" alt="Veggie Burger" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%2２.3em%２ font-family=%２Arial%２ font-size=%２２4%２ fill=%２%２38B5A2B%２%3E🌱%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Veggie Burger</span>
+                            <span class="item-price">R115</span>
+                            <p class="item-desc">House-made chickpea and sweet potato patty with avocado.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div id="desserts" class="menu-category">
+                <h2>Desserts</h2>
+                <div class="menu-items">
+                    
+                    <div class="menu-item">
+                        <img src="images/malva-pudding.png" alt="Malva Pudding" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%2２.3em%２ font-family=%２Arial%２ font-size=%２２4%２ fill=%２%２38B5A2B%２%3E🍮%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Malva Pudding</span>
+                            <span class="item-price">R65</span>
+                            <p class="item-desc">Traditional South African dessert with a creamy custard.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/Carrot cake.png" alt="Carrot Cake" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🥕%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Carrot Cake</span>
+                            <span class="item-price">R55</span>
+                            <p class="item-desc">Moist carrot cake with cream cheese frosting and walnuts.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="images/Chocolate brownie.png" alt="Chocolate Brownie" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%2290%22%3E%3Crect fill=%22%23F5EDE3%22 width=%2290%22 height=%2290%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%238B5A2B%22%3E🍫%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-info">
+                            <span class="item-name"> Chocolate Brownie</span>
+                            <span class="item-price">R50</span>
+                            <p class="item-desc">Rich, fudgy brownie served warm with vanilla ice cream.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to taste the Lowveld?</h2>
+            <p>Come and experience the warmth of The Lapa</p>
+            <a href="contact.html" class="btn-secondary" style="border-color: var(--color-white);">Book a Table Now</a>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-text">The <span>Lapa</span></span>
+                    <p>Coffee. Culture. Community.<br>In the heart of Mbombela.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="menu.html">Our Menu</a>
+                    <a href="index.html#gallery">Gallery</a>
+                    <a href="index.html#about">About Us</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Information</h4>
+                    <a href="#">FAQs</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <a href="tel:+27821234567">+27 82 123 4567</a>
+                    <a href="mailto:hello@thelapa.co.za">hello@thelapa.co.za</a>
+                    <a href="#">123 Kerk St, Mbombela</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> The Lapa Coffee & Kitchen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile Hamburger Menu
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('open');
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.hamburger').classList.remove('active');
+                document.querySelector('.nav-links').classList.remove('open');
+            });
+        });
+        
+        // Menu Tabs - Filter items by category
+        const tabs = document.querySelectorAll('.menu-tab');
+        const categories = document.querySelectorAll('.menu-category');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Get the target category
+                const target = this.dataset.target;
+                
+                // Hide all categories and show the selected one
+                categories.forEach(cat => {
+                    cat.classList.remove('active');
+                    if (cat.id === target) {
+                        cat.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // Book a Table button
+        document.querySelector('.btn-book-table').addEventListener('click', function() {
+            window.location.href = 'contact.html';
+        });
+        
+        // Current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Handle missing images gracefully
+        document.querySelectorAll('.menu-item img').forEach(img => {
+            img.addEventListener('error', function() {
+                // If image fails to load, show emoji fallback
+                this.style.display = 'none';
+                const parent = this.parentElement;
+                const fallback = document.createElement('div');
+                fallback.style.cssText = 'width:90px; height:90px; background:#F5EDE3; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:2.5rem; flex-shrink:0; border:2px solid #D4C4B5;';
+                fallback.textContent = '🍽️';
+                parent.insertBefore(fallback, this);
+            });
+        });
+    </script>
+</body>
+</html>

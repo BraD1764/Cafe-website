@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lapa Coffee & Kitchen - Mbombela, Nelspruit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        
+        :root {
+            --color-sand: #F5EDE3;
+            --color-stone: #D4C4B5;
+            --color-earth: #8B5A2B;
+            --color-terracotta: #C86A2B;
+            --color-green: #4A7C59;
+            --color-gold: #E8C547;
+            --color-charcoal: #2C2C2C;
+            --color-white: #FFFFFF;
+            --color-off-white: #FAF8F5;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--color-charcoal);
+            background-color: var(--color-off-white);
+            line-height: 1.6;
+        }
+        img { 
+            max-width: 100%; 
+            height: auto; 
+            display: block;
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4 { 
+            font-family: var(--font-heading); 
+            font-weight: 700; 
+            line-height: 1.2; 
+        }
+        h1 { font-size: 3.5rem; font-weight: 800; }
+        h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--color-terracotta);
+            margin: 0.5rem auto 0;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            display: inline-block;
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .btn-primary:hover {
+            background: var(--color-earth);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--color-white);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid var(--color-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-earth);
+        }
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: var(--color-earth);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--color-earth);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .btn-outline:hover {
+            background: var(--color-earth);
+            color: var(--color-white);
+        }
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            border-radius: 50px;
+        }
+        
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            padding: 12px 0;
+            transition: all 0.3s ease;
+        }
+        .header.scrolled {
+            padding: 8px 0;
+            background: rgba(255, 255, 255, 0.98);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-img {
+            height: 48px;
+            width: auto;
+        }
+        .logo-text {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--color-earth);
+        }
+        .logo-text span { color: var(--color-terracotta); }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .nav-links a {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--color-charcoal);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-terracotta);
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a:hover { color: var(--color-terracotta); }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .nav-actions .icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--color-charcoal);
+            transition: all 0.3s ease;
+            padding: 6px;
+        }
+        .nav-actions .icon-btn:hover { color: var(--color-terracotta); }
+        .btn-book-table {
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-book-table:hover {
+            background: var(--color-earth);
+            transform: translateY(-2px);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: var(--color-charcoal);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45));
+            background-size: cover;
+            background-position: center;
+            padding-top: 80px;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 700px;
+            padding: 4rem 0;
+            color: var(--color-white);
+        }
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* SECTIONS */
+        .section-padding { padding: 6rem 0; }
+        .section-padding-sm { padding: 3rem 0; }
+        .bg-sand { background: var(--color-sand); }
+        
+        /* EXPERIENCE SECTION */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .experience-card {
+            background: var(--color-white);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        .experience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+        .experience-card .card-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--color-sand);
+        }
+        .experience-card .card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--color-sand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--color-stone);
+        }
+        .experience-card h3 { color: var(--color-earth); }
+        .experience-card p { color: #666; font-size: 0.95rem; }
+        
+        /* FEATURED MENU */
+        .menu-carousel {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        .menu-card {
+            background: var(--color-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        .menu-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .menu-card .menu-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .menu-card .menu-placeholder {
+            width: 100%;
+            height: 220px;
+            background: var(--color-sand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--color-earth);
+        }
+        .menu-card-content {
+            padding: 1rem;
+            text-align: center;
+        }
+        .menu-card-content h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-earth);
+        }
+        .menu-card-content .price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--color-terracotta);
+            display: block;
+            margin: 4px 0 0.5rem;
+        }
+        .menu-card-content .btn-order {
+            background: var(--color-green);
+            color: var(--color-white);
+            border: none;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .menu-card-content .btn-order:hover { 
+            background: var(--color-earth);
+            transform: scale(1.05);
+        }
+        
+        /* BLOG SECTION */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .blog-card {
+            background: var(--color-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .blog-card .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .blog-card .blog-placeholder {
+            width: 100%;
+            height: 200px;
+            background: var(--color-sand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--color-earth);
+        }
+        .blog-card-content { padding: 1rem; }
+        .blog-card-content h4 {
+            font-size: 1.1rem;
+            color: var(--color-earth);
+        }
+        .blog-card-content p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 4px 0;
+        }
+        .blog-card-content .read-more {
+            color: var(--color-terracotta);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 4px;
+            transition: all 0.3s ease;
+        }
+        .blog-card-content .read-more:hover {
+            color: var(--color-earth);
+            padding-left: 4px;
+        }
+        
+        /* VISIT SECTION */
+        .visit-section { background: var(--color-sand); }
+        .visit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .visit-map .map-placeholder {
+            width: 100%;
+            min-height: 300px;
+            background: var(--color-stone);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--color-earth);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+        .visit-map .map-placeholder .map-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .visit-info h2 { color: var(--color-earth); }
+        .visit-details { margin: 1rem 0; }
+        .visit-details p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        .visit-details .icon {
+            width: 24px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .hours {
+            background: var(--color-white);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--color-terracotta);
+        }
+        .hours p { margin-bottom: 4px; }
+        
+        /* NEWSLETTER */
+        .newsletter {
+            background: var(--color-earth);
+            color: var(--color-white);
+            text-align: center;
+            padding: 4rem 0;
+        }
+        .newsletter h2 { color: var(--color-gold); }
+        .newsletter p { 
+            margin-bottom: 1.5rem; 
+            font-size: 1.1rem;
+        }
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            font-family: var(--font-body);
+        }
+        .newsletter-form button {
+            background: var(--color-gold);
+            color: var(--color-charcoal);
+            padding: 14px 32px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-family: var(--font-heading);
+        }
+        .newsletter-form button:hover { 
+            background: var(--color-white);
+            transform: scale(1.05);
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--color-charcoal);
+            color: #ccc;
+            padding: 4rem 0 1.5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        .footer-brand .logo-text { color: var(--color-white); }
+        .footer-brand p {
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: var(--color-white);
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        .footer-social a:hover {
+            background: var(--color-terracotta);
+            transform: translateY(-3px);
+        }
+        .footer-links h4 {
+            color: var(--color-white);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .footer-links a {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: var(--color-terracotta);
+            padding-left: 4px;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        
+        /* Tablets */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            .menu-carousel { grid-template-columns: repeat(2, 1fr); }
+            .experience-grid { grid-template-columns: repeat(2, 1fr); }
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--color-white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                box-shadow: var(--shadow-md);
+                transform: translateY(-120%);
+                transition: all 0.3s ease;
+                opacity: 0;
+                pointer-events: none;
+                z-index: 999;
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            .nav-actions .btn-book-table { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1.1rem; }
+            .hero-buttons { 
+                flex-direction: column; 
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+            .experience-grid { grid-template-columns: 1fr; }
+            .menu-carousel { grid-template-columns: 1fr 1fr; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .visit-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; }
+            .section-padding { padding: 3rem 0; }
+            .container { padding: 0 1rem; }
+        }
+        
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .menu-carousel { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2rem; }
+            .experience-card { padding: 1.5rem; }
+            .experience-card .card-image,
+            .experience-card .card-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            h2 { font-size: 1.6rem; }
+            .section-subtitle { font-size: 1rem; }
+            .visit-details p { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER / NAVIGATION -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="The Lapa Logo" class="logo-img" onerror="this.style.display='none'">
+                <span class="logo-text">The <span>Lapa</span></span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="menu.html">Our Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="icon-btn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="btn-book-table" onclick="window.location.href='contact.html'">Book a Table</button>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- HERO SECTION -->
+    <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('images/hero-bg.png'); background-size: cover; background-position: center;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to The Lapa</h1>
+                <p>Coffee. Culture. Community. In the heart of Mbombela.</p>
+                <div class="hero-buttons">
+                    <a href="menu.html" class="btn-primary">View Our Menu</a>
+                    <a href="contact.html" class="btn-secondary">Book a Table</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- EXPERIENCE SECTION -->
+    <section class="section-padding" id="about">
+        <div class="container">
+            <h2 class="section-title">More Than Just a Coffee Shop</h2>
+            <p class="section-subtitle">We're a place where stories are shared and connections are made</p>
+            
+            <div class="experience-grid">
+                <!-- Card 1: Specialty Coffee -->
+                <div class="experience-card">
+                   <img src="images/coffee-pour.png" alt="Specialty Coffee" class="card-image">
+                    <h3>Specialty Coffee</h3>
+                    <p>We source our beans from the finest African roasters, bringing you the bold, rich flavours of the continent.</p>
+                </div>
+                
+                <!-- Card 2: Modern African Kitchen -->
+                <div class="experience-card">
+                    <img src="images/breakfast.png" alt="Modern African Kitchen" class="card-image">
+                    <h3>Modern African Kitchen</h3>
+                    <p>Our menu is a celebration of local flavours, using fresh ingredients from the Lowveld and beyond.</p>
+                </div>
+                
+                <!-- Card 3: A Place to Gather -->
+                <div class="experience-card">
+              <img src="images/gathering.png" alt="A Place to Gather" class="card-image">
+                    <h3>A Place to Gather</h3>
+                    <p>Whether you're working, relaxing, or celebrating, our Lapa is your home away from home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FEATURED MENU SECTION -->
+    <section class="section-padding bg-sand" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Customer Favourites</h2>
+            <p class="section-subtitle">The dishes that keep our community coming back</p>
+            
+            <div class="menu-carousel">
+                <!-- Card 1: Cappuccino -->
+                <div class="menu-card">
+                   <img src="images/cappuccino.png" alt="Cappuccino" class="menu-image">
+                    <div class="menu-card-content">
+                        <h4>Cappuccino</h4>
+                        <span class="price">R38</span>
+                        <button class="btn-order" onclick="alert('Added Cappuccino to cart!')">Order Now</button>
+                    </div>
+                </div>
+                
+                <!-- Card 2: Lowveld Breakfast -->
+                <div class="menu-card">
+                   <img src="images/lowveld -breakfast.png" alt="Lowveld Breakfast" class="menu-image">
+                    <div class="menu-card-content">
+                        <h4>Lowveld Breakfast</h4>
+                        <span class="price">R120</span>
+                        <button class="btn-order" onclick="alert('Added Lowveld Breakfast to cart!')">Order Now</button>
+                    </div>
+                </div>
+                
+                <!-- Card 3: The Lapa Burger -->
+                <div class="menu-card">
+                    <img src="images/burger.png" alt="The Lapa Burger" class="menu-image">
+                    <div class="menu-card-content">
+                        <h4>The Lapa Burger</h4>
+                        <span class="price">R145</span>
+                        <button class="btn-order" onclick="alert('Added The Lapa Burger to cart!')">Order Now</button>
+                    </div>
+                </div>
+                
+                <!-- Card 4: Malva Pudding -->
+                <div class="menu-card">
+                    <img src="images/malva-pudding.png" alt="Malva Pudding" class="menu-image">
+                    <div class="menu-card-content">
+                        <h4>Malva Pudding</h4>
+                        <span class="price">R65</span>
+                        <button class="btn-order" onclick="alert('Added Malva Pudding to cart!')">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== BLOG SECTION ===== -->
+    <section class="section-padding" id="events">
+        <div class="container">
+            <h2 class="section-title">From the Lowveld Blog</h2>
+            <p class="section-subtitle">Stories from our community, kitchen, and beyond</p>
+            
+            <div class="blog-grid">
+                <!-- Blog 1: Meet Our Farmers -->
+                <article class="blog-card">
+                    <img src="images/Famers.png" alt="Local farmer at market" class="blog-image">  
+                    <div class="blog-card-content">
+                        <h4>Meet Our Farmers</h4>
+                        <p>Discover the local heroes behind our fresh, seasonal produce.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Blog 2: Exploring Mbombela -->
+                <article class="blog-card">
+                    <img src="images/Lowveld view.png" alt="Scenic Lowveld view" class="blog-image">
+                    <div class="blog-card-content">
+                        <h4>Exploring Mbombela</h4>
+                        <p>A coffee lover's guide to the best spots in Nelspruit.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Blog 3: The Art of Roasting -->
+                <article class="blog-card">
+                    <img src="images/Roasting coffee beans.png" alt="Coffee roasting" class="blog-image">
+                    <div class="blog-card-content">
+                        <h4>The Art of Roasting</h4>
+                        <p>How we bring out the best in African coffee beans.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    
+    <!-- VISIT US / LOCATION SECTION -->
+    <section class="section-padding visit-section">
+        <div class="container">
+            <div class="visit-grid">
+                <div class="visit-map">
+                        <p><strong>123 Kerk Street</strong></p>
+                        <p>Mbombela, Nelspruit, 1200</p>
+                        <p style="font-size:0.9rem; margin-top:0.5rem; color:#666;"/p>
+                    </div>
+                    <img src="images/map-The lapa.png" alt="Map showing The Lapa location">
+                </div>
+                <div class="visit-info">
+                    <h2>Visit The Lapa</h2>
+                    <div class="visit-details">
+                        <p><span class="icon">📍</span> 123 Kerk Street, Mbombela, Nelspruit, 1200</p>
+                        <p><span class="icon">📞</span> +27 82 123 4567</p>
+                        <p><span class="icon">✉️</span> hello@thelapa.co.za</p>
+                    </div>
+                    <div class="hours">
+                        <p><strong>Monday – Friday:</strong> 6:00 AM – 9:00 PM</p>
+                        <p><strong>Saturday:</strong> 7:00 AM – 10:00 PM</p>
+                        <p><strong>Sunday:</strong> 7:00 AM – 6:00 PM</p>
+                    </div>
+                    <a href="https://www.google.com/maps" target="_blank" class="btn-primary">Get Directions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- NEWSLETTER SECTION -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join The Lapa Community</h2>
+            <p>Sign up for 10% off your first meal and exclusive Lowveld events</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing! Check your email for your 10% off voucher.'); this.reset();">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-text">The <span>Lapa</span></span>
+                    <p>Coffee. Culture. Community.<br>In the heart of Mbombela.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="menu.html">Our Menu</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#about">About Us</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Information</h4>
+                    <a href="#">FAQs</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <a href="tel:+27821234567">+27 82 123 4567</a>
+                    <a href="mailto:hello@thelapa.co.za">hello@thelapa.co.za</a>
+                    <a href="#">123 Kerk St, Mbombela</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> The Lapa Coffee & Kitchen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JAVASCRIPT -->
+    <script>
+        // MOBILE HAMBURGER MENU
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('open');
+            });
+        }
+        
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+        
+        // HEADER SCROLL EFFECT
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // BOOK TABLE BUTTON
+        document.querySelector('.btn-book-table')?.addEventListener('click', function() {
+            window.location.href = 'contact.html';
+        });
+        
+        // CURRENT YEAR IN FOOTER
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        console.log('🍵 The Lapa Coffee & Kitchen - Homepage Loaded!');
+    </script>
+</body>
+</html>
